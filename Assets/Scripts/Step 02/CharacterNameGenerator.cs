@@ -31,7 +31,26 @@ public class CharacterNameGenerator : MonoBehaviour
     public void CreateNames()
     {
         // So here we would ideally want to be able to add some names to our first names, last names and nick names lists.
+        firstNames.Add("Aaron");
+        firstNames.Add("Baron");
+        firstNames.Add("Caron");
+        firstNames.Add("Daron");
+        firstNames.Add("Earon");
+        firstNames.Add("Faron");
 
+        lastNames.Add("Gass");
+        lastNames.Add("Gess");
+        lastNames.Add("Giss");
+        lastNames.Add("Goss");
+        lastNames.Add("Guss");
+        lastNames.Add("Smith");
+
+        nicknames.Add("King of Funk");
+        nicknames.Add("Freestyle Fanatic");
+        nicknames.Add("Moves Like Jagger");
+        nicknames.Add("Ruler of Rhythm");
+        nicknames.Add("Hot Feet");
+        nicknames.Add("The Chosen One");
     }
 
     /// <summary>
@@ -41,7 +60,7 @@ public class CharacterNameGenerator : MonoBehaviour
     public void SetIndividualCharacter(CharacterName character)
     {
         // So here rather than each character being called Blanky Blank Blank, we probably want it to be a random first,last and nickname
-
+        string CharacterName = firstNames[Random.Range(0, firstNames.Count)] + lastNames[Random.Range(0, lastNames.Count)] + nicknames[Random.Range(0, nicknames.Count)];
     }
 
     /// <summary>

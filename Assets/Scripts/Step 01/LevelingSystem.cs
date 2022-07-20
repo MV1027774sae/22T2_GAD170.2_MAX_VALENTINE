@@ -10,13 +10,11 @@ using UnityEngine;
 /// </summary>
 public class LevelingSystem : MonoBehaviour
 {
-    public StatsSystem myStatSystem; // a reference to our stats system
-
+    public StatsSystem // a reference to our stats system
     public int currentLevel; // Our current level.
-
-    public int currentXp; // The current amount of xp we have accumulated.
-
+    public int currentXp = 0; // The current amount of xp we have accumulated.
     public int currentXPThreshold = 10; // The amount of xp required to level up.
+    private int xpGained;
 
     /// <summary>
     /// sets our script to default values
@@ -24,23 +22,24 @@ public class LevelingSystem : MonoBehaviour
     public void SetDefaultValues()
     {
         // set our current level to 1
-
-        // set our current XP to zero
-
+        int currentLevel = 1;
         // set our current XP Threshold to be our level multiplied by our 100.
-
+        int currentXPThreshold = (currentLevel * 100);
     }
 
     /// <summary>
     /// A function called when the battle is completed and some xp is to be awarded.
     /// The amount of xp gained is coming into this function
     /// </summary>
-    public void AddXP(int xpGained)
+    public object AddXP(int xpGained)
     {
         // We want to be able to add on the xpGained onto our currentXp.
-
         // We probably want to check to see if we've gained enough xp to trigger a level up to occur.
-
+        if ((currentXp + xpGained) >= currentXPThreshold)
+        {
+            Debug.Log("Level up!");
+        }
+        return xpGained;
         // if we do then let's call our level up function.
     }
 
@@ -49,6 +48,11 @@ public class LevelingSystem : MonoBehaviour
     /// </summary>
     private void LevelUp()
     {
+        if ((currentXp + xpGained) >= currentXPThreshold)
+        {
+            (currentLevel + 1);
+        }
+
         // So let's increase our current level, but let's also recalculate our XP threshold to take into account the new level we've just gained. 
     }
 
