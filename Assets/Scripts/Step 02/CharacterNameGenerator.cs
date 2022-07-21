@@ -1,78 +1,82 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>
-/// Functions to complete:
-/// - Create Names
-/// - Set Individual Name
-/// - Set Team Character Names
-/// </summary>
-public class CharacterNameGenerator : MonoBehaviour
+namespace MaxValentine
 {
- 
-    [Header("Possible first names")]
-    private List<string> firstNames = new List<string>(); // a list of all possible first names for us to use.
-    [Header("Possible last names")]
-    private List<string> lastNames = new List<string>(); // a list of all possible last names for us to use.
-    [Header("Possible nicknames")]
-    private List<string> nicknames = new List<string>(); // a list of all possible nick names for us to use.
-
-
-    private void Awake()
-    {
-        // call the create names function
-        CreateNames();
-    }
-
     /// <summary>
-    /// Creates a list of names for all our characters to potentiall use.
+    /// Functions to complete:
+    /// - Create Names
+    /// - Set Individual Name
+    /// - Set Team Character Names
     /// </summary>
-    public void CreateNames()
+    public class CharacterNameGenerator : MonoBehaviour
     {
-        // So here we would ideally want to be able to add some names to our first names, last names and nick names lists.
-        firstNames.Add("Aaron");
-        firstNames.Add("Baron");
-        firstNames.Add("Caron");
-        firstNames.Add("Daron");
-        firstNames.Add("Earon");
-        firstNames.Add("Faron");
 
-        lastNames.Add("Gass");
-        lastNames.Add("Gess");
-        lastNames.Add("Giss");
-        lastNames.Add("Goss");
-        lastNames.Add("Guss");
-        lastNames.Add("Smith");
+        [Header("Possible first names")]
+        private List<string> firstNames = new List<string>(); // a list of all possible first names for us to use.
+        [Header("Possible last names")]
+        private List<string> lastNames = new List<string>(); // a list of all possible last names for us to use.
+        [Header("Possible nicknames")]
+        private List<string> nicknames = new List<string>(); // a list of all possible nick names for us to use.
 
-        nicknames.Add("King of Funk");
-        nicknames.Add("Freestyle Fanatic");
-        nicknames.Add("Moves Like Jagger");
-        nicknames.Add("Ruler of Rhythm");
-        nicknames.Add("Hot Feet");
-        nicknames.Add("The Chosen One");
-    }
 
-    /// <summary>
-    /// set a characters name to a random value in our Part 02
-    /// </summary>
-    /// <param name="character"></param>
-    public void SetIndividualCharacter(CharacterName character)
-    {
-        // So here rather than each character being called Blanky Blank Blank, we probably want it to be a random first,last and nickname
-        string CharacterName = firstNames[Random.Range(0, firstNames.Count)] + lastNames[Random.Range(0, lastNames.Count)] + nicknames[Random.Range(0, nicknames.Count)];
-    }
+        private void Awake()
+        {
+            // call the create names function
+            CreateNames();
+        }
 
-    /// <summary>
-    /// sets a character name for each member of a team, this is in our part 03
-    /// </summary>
-    /// <param name="namesNeeded"></param>
-    /// <returns></returns>
-    public void SetTeamCharacterNames(List<CharacterName> teamCharacters)
-    {
-        // so here we have a list of character names coming in.
-        // we should probably loop over that list of charcter names, and then for each chacter set thei first, last and nickname a random one from our lists
-        // if you want to get fancy you could use another function within this script to help out here.
+        /// <summary>
+        /// Creates a list of names for all our characters to potentiall use.
+        /// </summary>
+        public void CreateNames()
+        {
+            // So here we would ideally want to be able to add some names to our first names, last names and nick names lists.
+            firstNames.Add("Aaron");
+            firstNames.Add("Baron");
+            firstNames.Add("Caron");
+            firstNames.Add("Daron");
+            firstNames.Add("Earon");
+            firstNames.Add("Faron");
 
+            lastNames.Add("Gass");
+            lastNames.Add("Gess");
+            lastNames.Add("Giss");
+            lastNames.Add("Goss");
+            lastNames.Add("Guss");
+            lastNames.Add("Smith");
+
+            nicknames.Add("King of Funk");
+            nicknames.Add("Freestyle Fanatic");
+            nicknames.Add("Moves Like Jagger");
+            nicknames.Add("Ruler of Rhythm");
+            nicknames.Add("Hot Feet");
+            nicknames.Add("The Chosen One");
+        }
+
+        /// <summary>
+        /// set a characters name to a random value in our Part 02
+        /// </summary>
+        /// <param name="character"></param>
+        public void SetIndividualCharacter(CharacterName character)
+        {
+            // So here rather than each character being called Blanky Blank Blank, we probably want it to be a random first,last and nickname
+            string CharacterName = firstNames[Random.Range(0, firstNames.Count)] + lastNames[Random.Range(0, lastNames.Count)] + nicknames[Random.Range(0, nicknames.Count)];
+        }
+        /// <summary>
+        /// sets a character name for each member of a team, this is in our part 03
+        /// </summary>
+        /// <param name="namesNeeded"></param>
+        /// <returns></returns>
+        public void SetTeamCharacterNames(List<CharacterName> teamCharacters)
+        {
+            // so here we have a list of character names coming in.
+            // we should probably loop over that list of charcter names, and then for each chacter set thei first, last and nickname a random one from our lists
+            // if you want to get fancy you could use another function within this script to help out here.
+            for (int i = 0; i < firstNames.Count; i++)
+            {
+                firstNames[i] = Random(firstNames);
+            }
+        }
     }
 }
